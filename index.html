@@ -273,106 +273,13 @@
   </div>
 
   <div class="tabs" role="tablist">
-    <button class="tab-btn" role="tab" data-target="aprendiz" aria-selected="true">Aprendiz</button>
+    <button class="tab-btn" role="tab" data-target="individual" aria-selected="true">Processo Externo</button>
     <button class="tab-btn" role="tab" data-target="interno" aria-selected="false">Processo Interno</button>
-    <button class="tab-btn" role="tab" data-target="individual" aria-selected="false">Individual</button>
+    <button class="tab-btn" role="tab" data-target="aprendiz" aria-selected="false">Aprendiz</button>
   </div>
 
   <!-- ================= APRENDIZ ================= -->
-  <section class="sheet active" id="sheet-aprendiz">
-    <div class="card">
-      <h2>Identificação</h2>
-      <div class="id-grid">
-        <div><label for="ap-nome">Nome do candidato</label><input type="text" id="ap-nome"></div>
-        <div><label for="ap-data">Data da entrevista</label><input type="date" id="ap-data"></div>
-        <div><label for="ap-entrevistador">Entrevistador(a)</label><input type="text" id="ap-entrevistador"></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>Ficha de Avaliação — Aprendiz</h2>
-      <div style="overflow-x:auto">
-        <table data-sheet="aprendiz">
-          <thead>
-            <tr><th>Critério</th><th class="num">Peso</th><th class="num">Nota (1–10)</th><th class="num">Pontuação</th></tr>
-          </thead>
-          <tbody>
-            <tr data-peso="0.20"><td class="crit-name">Motivação e interesse no programa de aprendizagem</td><td class="num peso-val">20%</td><td class="num"><select class="nota"><option value="">–</option></select></td><td class="num pont-val">–</td></tr>
-            <tr data-peso="0.15"><td class="crit-name">Maturidade e organização da rotina</td><td class="num peso-val">15%</td><td class="num"><select class="nota"><option value="">–</option></select></td><td class="num pont-val">–</td></tr>
-            <tr data-peso="0.15"><td class="crit-name">Autoconhecimento (pontos fortes e a melhorar)</td><td class="num peso-val">15%</td><td class="num"><select class="nota"><option value="">–</option></select></td><td class="num pont-val">–</td></tr>
-            <tr data-peso="0.15"><td class="crit-name">Suporte familiar e estabilidade social</td><td class="num peso-val">15%</td><td class="num"><select class="nota"><option value="">–</option></select></td><td class="num pont-val">–</td></tr>
-            <tr data-peso="0.15"><td class="crit-name">Adequação à remuneração e aos benefícios oferecidos</td><td class="num peso-val">15%</td><td class="num"><select class="nota"><option value="">–</option></select></td><td class="num pont-val">–</td></tr>
-            <tr data-peso="0.20"><td class="crit-name">Disponibilidade e logística (transporte, horário escolar)</td><td class="num peso-val">20%</td><td class="num"><select class="nota"><option value="">–</option></select></td><td class="num pont-val">–</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="summary">
-        <div class="total-block">
-          <span class="total-label">Total (1 a 10)</span>
-          <span class="total-num" data-total>–</span>
-        </div>
-        <span class="pill" data-classificacao>Preencha as notas</span>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>Observações</h2>
-      <label for="ap-obs">Detalhar principalmente se a classificação for "recomendado com ressalvas"</label>
-      <textarea id="ap-obs"></textarea>
-      <p class="legend">Escala: 1–2 não atende · 3–4 atende muito pouco · 5–6 atende parcialmente · 7–8 atende bem · 9–10 supera a expectativa.</p>
-    </div>
-
-    <div class="actions"><button class="primary" data-print>Imprimir / Salvar como PDF</button></div>
-  </section>
-
-  <!-- ================= PROCESSO INTERNO ================= -->
-  <section class="sheet" id="sheet-interno">
-    <div class="card">
-      <h2>Identificação</h2>
-      <div class="id-grid">
-        <div><label for="pi-nome">Nome do candidato</label><input type="text" id="pi-nome"></div>
-        <div><label for="pi-data">Data da entrevista</label><input type="date" id="pi-data"></div>
-        <div><label for="pi-entrevistador">Entrevistador(a)</label><input type="text" id="pi-entrevistador"></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>Ficha de Avaliação — Processo Interno</h2>
-      <div style="overflow-x:auto">
-        <table data-sheet="interno">
-          <thead>
-            <tr><th>Critério</th><th class="num">Peso</th><th class="num">Nota (1–10)</th><th class="num">Pontuação</th></tr>
-          </thead>
-          <tbody>
-            <tr data-peso="0.25"><td class="crit-name">Desempenho e histórico na função atual</td><td class="num peso-val">25%</td><td class="num"><select class="nota"><option value="">–</option></select></td><td class="num pont-val">–</td></tr>
-            <tr data-peso="0.20"><td class="crit-name">Motivação para o novo cargo</td><td class="num peso-val">20%</td><td class="num"><select class="nota"><option value="">–</option></select></td><td class="num pont-val">–</td></tr>
-            <tr data-peso="0.20"><td class="crit-name">Ações de desenvolvimento realizadas</td><td class="num peso-val">20%</td><td class="num"><select class="nota"><option value="">–</option></select></td><td class="num pont-val">–</td></tr>
-            <tr data-peso="0.20"><td class="crit-name">Relacionamento com equipe e gestão</td><td class="num peso-val">20%</td><td class="num"><select class="nota"><option value="">–</option></select></td><td class="num pont-val">–</td></tr>
-            <tr data-peso="0.15"><td class="crit-name">Alinhamento da pretensão salarial</td><td class="num peso-val">15%</td><td class="num"><select class="nota"><option value="">–</option></select></td><td class="num pont-val">–</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="summary">
-        <div class="total-block">
-          <span class="total-label">Total (1 a 10)</span>
-          <span class="total-num" data-total>–</span>
-        </div>
-        <span class="pill" data-classificacao>Preencha as notas</span>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>Observações</h2>
-      <label for="pi-obs">Detalhar principalmente se a classificação for "recomendado com ressalvas"</label>
-      <textarea id="pi-obs"></textarea>
-      <p class="legend">Escala: 1–2 não atende · 3–4 atende muito pouco · 5–6 atende parcialmente · 7–8 atende bem · 9–10 supera a expectativa.</p>
-    </div>
-
-    <div class="actions"><button class="primary" data-print>Imprimir / Salvar como PDF</button></div>
-  </section>
-
-  <!-- ================= INDIVIDUAL ================= -->
-  <section class="sheet" id="sheet-individual">
+  <section class="sheet active" id="sheet-individual">
     <div class="card">
       <h2>Identificação</h2>
       <div class="id-grid">
@@ -415,10 +322,101 @@
       <p class="legend">Escala: 1–2 não atende · 3–4 atende muito pouco · 5–6 atende parcialmente · 7–8 atende bem · 9–10 supera a expectativa.</p>
     </div>
 
-    <div class="actions"><button class="primary" data-print>Imprimir / Salvar como PDF</button></div>
+    <div class="actions"><button class="primary" data-export="individual" data-label="Processo_Externo">Baixar PDF</button></div>
+  </section>
+  <section class="sheet" id="sheet-interno">
+    <div class="card">
+      <h2>Identificação</h2>
+      <div class="id-grid">
+        <div><label for="pi-nome">Nome do candidato</label><input type="text" id="pi-nome"></div>
+        <div><label for="pi-data">Data da entrevista</label><input type="date" id="pi-data"></div>
+        <div><label for="pi-entrevistador">Entrevistador(a)</label><input type="text" id="pi-entrevistador"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Ficha de Avaliação — Processo Interno</h2>
+      <div style="overflow-x:auto">
+        <table data-sheet="interno">
+          <thead>
+            <tr><th>Critério</th><th class="num">Peso</th><th class="num">Nota (1–10)</th><th class="num">Pontuação</th></tr>
+          </thead>
+          <tbody>
+            <tr data-peso="0.25"><td class="crit-name">Desempenho e histórico na função atual</td><td class="num peso-val">25%</td><td class="num"><select class="nota"><option value="">–</option></select></td><td class="num pont-val">–</td></tr>
+            <tr data-peso="0.20"><td class="crit-name">Motivação para o novo cargo</td><td class="num peso-val">20%</td><td class="num"><select class="nota"><option value="">–</option></select></td><td class="num pont-val">–</td></tr>
+            <tr data-peso="0.20"><td class="crit-name">Ações de desenvolvimento realizadas</td><td class="num peso-val">20%</td><td class="num"><select class="nota"><option value="">–</option></select></td><td class="num pont-val">–</td></tr>
+            <tr data-peso="0.20"><td class="crit-name">Relacionamento com equipe e gestão</td><td class="num peso-val">20%</td><td class="num"><select class="nota"><option value="">–</option></select></td><td class="num pont-val">–</td></tr>
+            <tr data-peso="0.15"><td class="crit-name">Alinhamento da pretensão salarial</td><td class="num peso-val">15%</td><td class="num"><select class="nota"><option value="">–</option></select></td><td class="num pont-val">–</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="summary">
+        <div class="total-block">
+          <span class="total-label">Total (1 a 10)</span>
+          <span class="total-num" data-total>–</span>
+        </div>
+        <span class="pill" data-classificacao>Preencha as notas</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Observações</h2>
+      <label for="pi-obs">Detalhar principalmente se a classificação for "recomendado com ressalvas"</label>
+      <textarea id="pi-obs"></textarea>
+      <p class="legend">Escala: 1–2 não atende · 3–4 atende muito pouco · 5–6 atende parcialmente · 7–8 atende bem · 9–10 supera a expectativa.</p>
+    </div>
+
+    <div class="actions"><button class="primary" data-export="interno" data-label="Processo_Interno">Baixar PDF</button></div>
+  </section>
+  <section class="sheet" id="sheet-aprendiz">
+    <div class="card">
+      <h2>Identificação</h2>
+      <div class="id-grid">
+        <div><label for="ap-nome">Nome do candidato</label><input type="text" id="ap-nome"></div>
+        <div><label for="ap-data">Data da entrevista</label><input type="date" id="ap-data"></div>
+        <div><label for="ap-entrevistador">Entrevistador(a)</label><input type="text" id="ap-entrevistador"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Ficha de Avaliação — Aprendiz</h2>
+      <div style="overflow-x:auto">
+        <table data-sheet="aprendiz">
+          <thead>
+            <tr><th>Critério</th><th class="num">Peso</th><th class="num">Nota (1–10)</th><th class="num">Pontuação</th></tr>
+          </thead>
+          <tbody>
+            <tr data-peso="0.20"><td class="crit-name">Motivação e interesse no programa de aprendizagem</td><td class="num peso-val">20%</td><td class="num"><select class="nota"><option value="">–</option></select></td><td class="num pont-val">–</td></tr>
+            <tr data-peso="0.15"><td class="crit-name">Maturidade e organização da rotina</td><td class="num peso-val">15%</td><td class="num"><select class="nota"><option value="">–</option></select></td><td class="num pont-val">–</td></tr>
+            <tr data-peso="0.15"><td class="crit-name">Autoconhecimento (pontos fortes e a melhorar)</td><td class="num peso-val">15%</td><td class="num"><select class="nota"><option value="">–</option></select></td><td class="num pont-val">–</td></tr>
+            <tr data-peso="0.15"><td class="crit-name">Suporte familiar e estabilidade social</td><td class="num peso-val">15%</td><td class="num"><select class="nota"><option value="">–</option></select></td><td class="num pont-val">–</td></tr>
+            <tr data-peso="0.15"><td class="crit-name">Adequação à remuneração e aos benefícios oferecidos</td><td class="num peso-val">15%</td><td class="num"><select class="nota"><option value="">–</option></select></td><td class="num pont-val">–</td></tr>
+            <tr data-peso="0.20"><td class="crit-name">Disponibilidade e logística (transporte, horário escolar)</td><td class="num peso-val">20%</td><td class="num"><select class="nota"><option value="">–</option></select></td><td class="num pont-val">–</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="summary">
+        <div class="total-block">
+          <span class="total-label">Total (1 a 10)</span>
+          <span class="total-num" data-total>–</span>
+        </div>
+        <span class="pill" data-classificacao>Preencha as notas</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Observações</h2>
+      <label for="ap-obs">Detalhar principalmente se a classificação for "recomendado com ressalvas"</label>
+      <textarea id="ap-obs"></textarea>
+      <p class="legend">Escala: 1–2 não atende · 3–4 atende muito pouco · 5–6 atende parcialmente · 7–8 atende bem · 9–10 supera a expectativa.</p>
+    </div>
+
+    <div class="actions"><button class="primary" data-export="aprendiz" data-label="Aprendiz">Baixar PDF</button></div>
   </section>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js"></script>
 <script>
 (function () {
   var REC = 8.0, RESSALVA = 6.0;
@@ -492,8 +490,43 @@
     });
   });
 
-  document.querySelectorAll('[data-print]').forEach(function (btn) {
-    btn.addEventListener('click', function () { window.print(); });
+  document.querySelectorAll('[data-export]').forEach(function (btn) {
+    btn.addEventListener('click', function () { exportSheetAsPdf(btn); });
   });
+
+  function exportSheetAsPdf(btn) {
+    var sheetKey = btn.getAttribute('data-export');
+    var label = btn.getAttribute('data-label') || 'ficha';
+    var sheetEl = document.getElementById('sheet-' + sheetKey);
+    var actionsEl = sheetEl.querySelector('.actions');
+    var root = document.documentElement;
+    var prevTheme = root.getAttribute('data-theme');
+    var prevText = btn.textContent;
+
+    btn.disabled = true;
+    btn.textContent = 'Gerando PDF...';
+    actionsEl.style.visibility = 'hidden';
+    root.setAttribute('data-theme', 'light');
+
+    setTimeout(function () {
+      html2canvas(sheetEl, { scale: 2, backgroundColor: '#f7f5f1', useCORS: true }).then(function (canvas) {
+        var pdfWidth = 210;
+        var pdfHeight = canvas.height * (pdfWidth / canvas.width);
+        var jsPDF = window.jspdf.jsPDF;
+        var pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: [pdfWidth, pdfHeight] });
+        var imgData = canvas.toDataURL('image/png');
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+
+        var nomeInput = sheetEl.querySelector('input[id$="-nome"]');
+        var nome = (nomeInput && nomeInput.value.trim()) ? nomeInput.value.trim().replace(/[^a-zA-Z0-9]+/g, '_') : 'candidato';
+        pdf.save('Ficha_' + label + '_' + nome + '.pdf');
+      }).finally(function () {
+        actionsEl.style.visibility = 'visible';
+        if (prevTheme === null) { root.removeAttribute('data-theme'); } else { root.setAttribute('data-theme', prevTheme); }
+        btn.disabled = false;
+        btn.textContent = prevText;
+      });
+    }, 50);
+  }
 })();
 </script>
