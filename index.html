@@ -128,6 +128,8 @@
     border: 1px solid var(--line);
     border-radius: 10px;
     padding: 18px;
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
   .card h2 {
     font-family: "Source Serif 4", "Times New Roman", serif;
@@ -162,7 +164,13 @@
     border-radius: 6px;
     padding: 7px 9px;
   }
-  textarea { resize: vertical; min-height: 70px; }
+  textarea {
+    resize: vertical;
+    min-height: 70px;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    white-space: pre-wrap;
+  }
 
   table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
   thead th {
@@ -322,7 +330,7 @@
       <p class="legend">Escala: 1–2 não atende · 3–4 atende muito pouco · 5–6 atende parcialmente · 7–8 atende bem · 9–10 supera a expectativa.</p>
     </div>
 
-    <div class="actions"><button class="primary" data-export="individual" data-label="Processo_Externo">Baixar PDF</button></div>
+    <div class="actions"><button class="primary" data-export="individual" data-label="Processo_Externo">Imprimir / Salvar como PDF</button></div>
   </section>
   <section class="sheet" id="sheet-interno">
     <div class="card">
@@ -366,7 +374,7 @@
       <p class="legend">Escala: 1–2 não atende · 3–4 atende muito pouco · 5–6 atende parcialmente · 7–8 atende bem · 9–10 supera a expectativa.</p>
     </div>
 
-    <div class="actions"><button class="primary" data-export="interno" data-label="Processo_Interno">Baixar PDF</button></div>
+    <div class="actions"><button class="primary" data-export="interno" data-label="Processo_Interno">Imprimir / Salvar como PDF</button></div>
   </section>
   <section class="sheet" id="sheet-aprendiz">
     <div class="card">
@@ -411,12 +419,10 @@
       <p class="legend">Escala: 1–2 não atende · 3–4 atende muito pouco · 5–6 atende parcialmente · 7–8 atende bem · 9–10 supera a expectativa.</p>
     </div>
 
-    <div class="actions"><button class="primary" data-export="aprendiz" data-label="Aprendiz">Baixar PDF</button></div>
+    <div class="actions"><button class="primary" data-export="aprendiz" data-label="Aprendiz">Imprimir / Salvar como PDF</button></div>
   </section>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js"></script>
 <script>
 (function () {
   var REC = 8.0, RESSALVA = 6.0;
@@ -491,69 +497,7 @@
   });
 
   document.querySelectorAll('[data-export]').forEach(function (btn) {
-    btn.addEventListener('click', function () { exportSheetAsPdf(btn); });
+    btn.addEventListener('click', function () { window.print(); });
   });
-
-  var SHEET_LABELS = {
-    individual: 'Processo Externo',
-    interno: 'Processo Interno',
-    aprendiz: 'Aprendiz'
-  };
-
-  function exportSheetAsPdf(btn) {
-    var sheetKey = btn.getAttribute('data-export');
-    var label = btn.getAttribute('data-label') || 'ficha';
-    var sheetEl = document.getElementById('sheet-' + sheetKey);
-    var headerEl = document.querySelector('.header');
-    var root = document.documentElement;
-    var prevTheme = root.getAttribute('data-theme');
-    var prevText = btn.textContent;
-
-    btn.disabled = true;
-    btn.textContent = 'Gerando PDF...';
-    root.setAttribute('data-theme', 'light');
-
-    var wrapper = document.createElement('div');
-    wrapper.className = 'page';
-    wrapper.style.position = 'fixed';
-    wrapper.style.top = '0';
-    wrapper.style.left = '-10000px';
-    wrapper.style.width = '760px';
-    wrapper.style.background = 'var(--paper)';
-    wrapper.style.padding = '28px 16px';
-
-    var headerClone = headerEl.cloneNode(true);
-    var subtitleEl = headerClone.querySelector('.subtitle');
-    if (subtitleEl) {
-      subtitleEl.textContent = 'Grupo Monte MTA — Recrutamento e Seleção — ' + SHEET_LABELS[sheetKey];
-    }
-    wrapper.appendChild(headerClone);
-
-    sheetEl.querySelectorAll('.card').forEach(function (card) {
-      wrapper.appendChild(card.cloneNode(true));
-    });
-
-    document.body.appendChild(wrapper);
-
-    setTimeout(function () {
-      html2canvas(wrapper, { scale: 2, backgroundColor: '#f7f5f1', useCORS: true }).then(function (canvas) {
-        var pdfWidth = 210;
-        var pdfHeight = canvas.height * (pdfWidth / canvas.width);
-        var jsPDF = window.jspdf.jsPDF;
-        var pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: [pdfWidth, pdfHeight] });
-        var imgData = canvas.toDataURL('image/png');
-        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-
-        var nomeInput = sheetEl.querySelector('input[id$="-nome"]');
-        var nome = (nomeInput && nomeInput.value.trim()) ? nomeInput.value.trim().replace(/[^a-zA-Z0-9]+/g, '_') : 'candidato';
-        pdf.save('Ficha_' + label + '_' + nome + '.pdf');
-      }).finally(function () {
-        document.body.removeChild(wrapper);
-        if (prevTheme === null) { root.removeAttribute('data-theme'); } else { root.setAttribute('data-theme', prevTheme); }
-        btn.disabled = false;
-        btn.textContent = prevText;
-      });
-    }, 50);
-  }
 })();
 </script>
