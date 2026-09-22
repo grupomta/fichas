@@ -494,22 +494,49 @@
     btn.addEventListener('click', function () { exportSheetAsPdf(btn); });
   });
 
+  var SHEET_LABELS = {
+    individual: 'Processo Externo',
+    interno: 'Processo Interno',
+    aprendiz: 'Aprendiz'
+  };
+
   function exportSheetAsPdf(btn) {
     var sheetKey = btn.getAttribute('data-export');
     var label = btn.getAttribute('data-label') || 'ficha';
     var sheetEl = document.getElementById('sheet-' + sheetKey);
-    var actionsEl = sheetEl.querySelector('.actions');
+    var headerEl = document.querySelector('.header');
     var root = document.documentElement;
     var prevTheme = root.getAttribute('data-theme');
     var prevText = btn.textContent;
 
     btn.disabled = true;
     btn.textContent = 'Gerando PDF...';
-    actionsEl.style.visibility = 'hidden';
     root.setAttribute('data-theme', 'light');
 
+    var wrapper = document.createElement('div');
+    wrapper.className = 'page';
+    wrapper.style.position = 'fixed';
+    wrapper.style.top = '0';
+    wrapper.style.left = '-10000px';
+    wrapper.style.width = '760px';
+    wrapper.style.background = 'var(--paper)';
+    wrapper.style.padding = '28px 16px';
+
+    var headerClone = headerEl.cloneNode(true);
+    var subtitleEl = headerClone.querySelector('.subtitle');
+    if (subtitleEl) {
+      subtitleEl.textContent = 'Grupo Monte MTA — Recrutamento e Seleção — ' + SHEET_LABELS[sheetKey];
+    }
+    wrapper.appendChild(headerClone);
+
+    sheetEl.querySelectorAll('.card').forEach(function (card) {
+      wrapper.appendChild(card.cloneNode(true));
+    });
+
+    document.body.appendChild(wrapper);
+
     setTimeout(function () {
-      html2canvas(sheetEl, { scale: 2, backgroundColor: '#f7f5f1', useCORS: true }).then(function (canvas) {
+      html2canvas(wrapper, { scale: 2, backgroundColor: '#f7f5f1', useCORS: true }).then(function (canvas) {
         var pdfWidth = 210;
         var pdfHeight = canvas.height * (pdfWidth / canvas.width);
         var jsPDF = window.jspdf.jsPDF;
@@ -521,7 +548,7 @@
         var nome = (nomeInput && nomeInput.value.trim()) ? nomeInput.value.trim().replace(/[^a-zA-Z0-9]+/g, '_') : 'candidato';
         pdf.save('Ficha_' + label + '_' + nome + '.pdf');
       }).finally(function () {
-        actionsEl.style.visibility = 'visible';
+        document.body.removeChild(wrapper);
         if (prevTheme === null) { root.removeAttribute('data-theme'); } else { root.setAttribute('data-theme', prevTheme); }
         btn.disabled = false;
         btn.textContent = prevText;
