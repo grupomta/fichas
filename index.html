@@ -325,8 +325,8 @@
     </div>
 
     <div class="card">
-      <h2>Observações</h2>
-      <label for="in-obs">Detalhar principalmente se a classificação for "recomendado com ressalvas"</label>
+      <h2>Parecer</h2>
+      <label for="in-obs">Escreva aqui seu parecer, detalhando principalmente se a classificação for "recomendado com ressalvas"</label>
       <textarea id="in-obs"></textarea>
       <p class="legend">Escala: 1–2 não atende · 3–4 atende muito pouco · 5–6 atende parcialmente · 7–8 atende bem · 9–10 supera a expectativa.</p>
     </div>
@@ -369,8 +369,8 @@
     </div>
 
     <div class="card">
-      <h2>Observações</h2>
-      <label for="pi-obs">Detalhar principalmente se a classificação for "recomendado com ressalvas"</label>
+      <h2>Parecer</h2>
+      <label for="pi-obs">Escreva aqui seu parecer, detalhando principalmente se a classificação for "recomendado com ressalvas"</label>
       <textarea id="pi-obs"></textarea>
       <p class="legend">Escala: 1–2 não atende · 3–4 atende muito pouco · 5–6 atende parcialmente · 7–8 atende bem · 9–10 supera a expectativa.</p>
     </div>
@@ -414,8 +414,8 @@
     </div>
 
     <div class="card">
-      <h2>Observações</h2>
-      <label for="ap-obs">Detalhar principalmente se a classificação for "recomendado com ressalvas"</label>
+      <h2>Parecer</h2>
+      <label for="ap-obs">Escreva aqui seu parecer, detalhando principalmente se a classificação for "recomendado com ressalvas"</label>
       <textarea id="ap-obs"></textarea>
       <p class="legend">Escala: 1–2 não atende · 3–4 atende muito pouco · 5–6 atende parcialmente · 7–8 atende bem · 9–10 supera a expectativa.</p>
     </div>
@@ -471,13 +471,13 @@
     var dot = '<span class="pill-dot"></span>';
     if (total >= REC) {
       pillEl.classList.add('good');
-      pillEl.innerHTML = dot + 'Recomendado';
+      pillEl.innerHTML = dot + 'Aprovado';
     } else if (total >= RESSALVA) {
       pillEl.classList.add('warn');
       pillEl.innerHTML = dot + 'Recomendado com ressalvas';
     } else {
       pillEl.classList.add('bad');
-      pillEl.innerHTML = dot + 'Não recomendado';
+      pillEl.innerHTML = dot + 'Desclassificado';
     }
   }
 
